@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <h1>Tambah Data</h1>
+    <form method="POST" action="/mahasiswas/create">
+      <input type="text" name="title">
+      <input type="submit" value="Tambah">
+    </form>
+
+    <h1>Mahasiswa</h1>
+    <table>
+        <tr>
+            <th>Nama</th>
+            <th colspan="2"></th>
+        </tr>
+        {% for mahasiswa in mahasiswas %}
+            <tr><td>{{mahasiswa.title}}</td>
+                <td><a href='/mahasiswas/{{ mahasiswa.title }}/edit' />Edit</td>
+                <td>
+                <form method="POST" action="/mahasiswas/delete" style="display: inline">
+                  <input type="hidden" value="{{mahasiswa.title}}" name="title">
+                  <input type="submit" value="Delete">
+                </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+  <body>
+    <h1>Edit Data</h1>
+    <form method="POST" action="/mahasiswas/update" style="display: inline">
+      <p>Title: {{mahasiswa.title}}</p>
+      <input type="hidden" value="{{mahasiswa.title}}" name="oldtitle">
+      <input type="text" value="{{mahasiswa.title}}" name="newtitle">
+      <input type="submit" value="Update">
+    </form>
+
+    <form method="POST" action="/mahasiswas/delete" style="display: inline">
+      <input type="hidden" value="{{mahasiswa.title}}" name="title">
+      <input type="submit" value="Delete">
+    </form>
+
+    <h1>Mahasiswa</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th></th>
+        </tr>
+        {% for mahasiswa in mahasiswas %}
+            <tr><td>{{mahasiswa.title}}</td>
+                <td><a href='/mahasiswas/{{ mahasiswa.title }}/edit' />Edit</td>
+            </tr>
+        {% endfor %}
+    </table>
+  </body>
+</html>
